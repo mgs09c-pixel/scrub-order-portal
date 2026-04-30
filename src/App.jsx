@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import {
   ShoppingCart,
-  Search,
   CheckCircle,
   ArrowLeft,
   Plus,
@@ -10,30 +9,21 @@ import {
   Lock,
 } from "lucide-react";
 
-function Button({ children, className = "", ...props }) {
+function Button({ children, className = "", style = {}, ...props }) {
   return (
     <button
-      className={`rounded px-4 py-2 font-semibold cursor-pointer ${className}`}
+      className={className}
+      style={{
+        borderRadius: 4,
+        padding: "8px 14px",
+        fontWeight: 700,
+        cursor: "pointer",
+        ...style,
+      }}
       {...props}
     >
       {children}
     </button>
-  );
-}
-
-function Card({ children, className = "", ...props }) {
-  return (
-    <div className={`border rounded bg-white ${className}`} {...props}>
-      {children}
-    </div>
-  );
-}
-
-function CardContent({ children, className = "", ...props }) {
-  return (
-    <div className={className} {...props}>
-      {children}
-    </div>
   );
 }
 
@@ -42,84 +32,161 @@ const LOGIN_USERNAME = "employee";
 const LOGIN_PASSWORD = "scrubs2026";
 const SUBMISSION_EMAIL = "your-email@company.com";
 
+const standardSizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+
+const womensBottomSizes = [
+  "XXS",
+  "XS- Petite",
+  "XS",
+  "S- Petite",
+  "S",
+  "M- Tall",
+  "M",
+  "L- Tall",
+  "L-Petite",
+  "L",
+  "XL- Petite",
+  "XL",
+  "XL-Tall",
+  "XXL",
+  "XXXL",
+];
+
+const scrubColors = ["Navy", "Caribbean Blue"];
+const teeColors = ["Mauve", "Sage", "Asphalt", "Ocean Blue"];
+
+const teeProduct = {
+  id: "bella-canvas-3001",
+  category: "All",
+  brand: "BELLA + CANVAS",
+  name: "3001 - Jersey Tee",
+  style: "3001",
+  price: 0,
+  colors: teeColors,
+  sizes: standardSizes,
+  image:
+    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop",
+  description: "Soft jersey tee available in approved company colors.",
+  embroidery: true,
+};
+
 const products = [
   {
-    id: "top-2625A",
-    category: "Surgery Technicians",
-    type: "Women's Tops",
+    id: "women-2625A",
+    category: "Women",
     brand: "Infinity",
-    name: "Ladies Mock Wrap Scrub Top",
+    name: "2625A Top",
     style: "2625A",
-    price: 46.49,
-    colors: ["Navy", "Teal"],
-    sizes: ["XXS", "XS", "S", "M", "L", "XL", "2X", "3X"],
+    price: 0,
+    colors: scrubColors,
+    sizes: standardSizes,
     image:
       "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=900&auto=format&fit=crop",
-    description:
-      "Contemporary fit mock wrap scrub top with two front pockets, stretch panel, and side vents.",
+    description: "Infinity women's scrub top.",
     embroidery: true,
   },
   {
-    id: "pant-CK200A",
-    category: "Surgery Technicians",
-    type: "Women's Pants",
+    id: "women-CK110A",
+    category: "Women",
     brand: "Infinity",
-    name: "Fly Front Cargo Pant",
-    style: "CK200A",
-    price: 39.59,
-    colors: ["Navy", "Teal"],
-    sizes: ["XXS", "XS", "S", "M", "L", "XL", "2X", "3X"],
+    name: "CK110A Bottom - Jogger",
+    style: "CK110A",
+    price: 0,
+    colors: scrubColors,
+    sizes: womensBottomSizes,
     image:
       "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
-    description:
-      "Comfortable cargo scrub pant with durable stretch fabric and multiple utility pockets.",
+    description: "Infinity women's jogger scrub bottom.",
     embroidery: false,
   },
   {
-    id: "kennel-top-1",
-    category: "Kennel Veterinary Technicians",
-    type: "Women's Tops",
+    id: "women-CK065A",
+    category: "Women",
     brand: "Infinity",
-    name: "V-Neck Scrub Top",
-    style: "CK865A",
-    price: 44.99,
-    colors: ["Navy", "Ceil Blue", "Teal"],
-    sizes: ["XXS", "XS", "S", "M", "L", "XL", "2X", "3X"],
+    name: "CK065A Bottom - Straight",
+    style: "CK065A",
+    price: 0,
+    colors: scrubColors,
+    sizes: womensBottomSizes,
     image:
-      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=900&auto=format&fit=crop",
-    description: "Everyday scrub top with flexible fit and clinic-ready durability.",
+      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    description: "Infinity women's straight scrub bottom.",
+    embroidery: false,
+  },
+  { ...teeProduct, id: "women-tee", category: "Women" },
+
+  {
+    id: "men-top-551816823",
+    category: "Men",
+    brand: "Infinity",
+    name: "Top",
+    style: "551816823",
+    price: 0,
+    colors: scrubColors,
+    sizes: standardSizes,
+    image:
+      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=900&auto=format&fit=crop",
+    description: "Infinity men's scrub top.",
     embroidery: true,
   },
   {
-    id: "csr-polo-1",
-    category: "CSR",
-    type: "CSR",
-    brand: "Company Apparel",
-    name: "Logo Polo Shirt",
-    style: "POLO-01",
-    price: 29.99,
-    colors: ["Navy", "Black", "Grey"],
-    sizes: ["XS", "S", "M", "L", "XL", "2X", "3X"],
+    id: "men-bottom-551816953",
+    category: "Men",
+    brand: "Infinity",
+    name: "Bottom",
+    style: "551816953",
+    price: 0,
+    colors: scrubColors,
+    sizes: standardSizes,
     image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop",
-    description: "Professional front desk polo with company logo placement.",
+      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    description: "Infinity men's scrub bottom.",
+    embroidery: false,
+  },
+  { ...teeProduct, id: "men-tee", category: "Men" },
+
+  {
+    id: "doctors-top-551816823",
+    category: "Doctors",
+    brand: "Infinity",
+    name: "Top",
+    style: "551816823",
+    price: 0,
+    colors: scrubColors,
+    sizes: standardSizes,
+    image:
+      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=900&auto=format&fit=crop",
+    description: "Infinity doctor's scrub top.",
     embroidery: true,
   },
+  {
+    id: "doctors-bottom-551816953",
+    category: "Doctors",
+    brand: "Infinity",
+    name: "Bottom",
+    style: "551816953",
+    price: 0,
+    colors: scrubColors,
+    sizes: standardSizes,
+    image:
+      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    description: "Infinity doctor's scrub bottom.",
+    embroidery: false,
+  },
+  { ...teeProduct, id: "doctors-tee", category: "Doctors" },
 ];
 
 function money(value) {
-  return value.toLocaleString(undefined, {
-    style: "currency",
-    currency: "USD",
-  });
+  if (value === 0) return "Company Provided";
+  return value.toLocaleString(undefined, { style: "currency", currency: "USD" });
 }
 
 function Header({ cartCount, setPage, loggedIn, setLoggedIn }) {
   return (
     <>
-      <div style={{ background: "#005a70", color: "white", padding: "12px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>{loggedIn ? "Hi, Team Member" : "Preferred Partner Program"}</div>
-        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+      <div style={{ background: "#005a70", color: "white", padding: "12px 24px", display: "flex", justifyContent: "space-between" }}>
+        <div>{loggedIn ? "Hi, Team Member" : "Uniform Request Portal"}</div>
+        <div style={{ display: "flex", gap: 20 }}>
           {loggedIn && <button onClick={() => setPage("home")}>Home</button>}
           {loggedIn && (
             <button onClick={() => setPage("cart")} style={{ position: "relative" }}>
@@ -131,33 +198,20 @@ function Header({ cartCount, setPage, loggedIn, setLoggedIn }) {
               )}
             </button>
           )}
-          {loggedIn && (
-            <button
-              onClick={() => {
-                setLoggedIn(false);
-                setPage("login");
-              }}
-            >
-              Log Out
-            </button>
-          )}
+          {loggedIn && <button onClick={() => { setLoggedIn(false); setPage("login"); }}>Log Out</button>}
         </div>
       </div>
 
       <div style={{ padding: 24, borderBottom: "1px solid #ddd" }}>
         <div style={{ fontSize: 32, fontWeight: 700, color: "#35533b", lineHeight: 1.1 }}>
-          North Florida
-          <br />
-          Animal Hospital
+          North Florida<br />Animal Hospital
         </div>
       </div>
 
       {loggedIn && (
-        <div style={{ display: "flex", justifyContent: "center", gap: 32, padding: 16, borderBottom: "1px solid #ddd", fontWeight: 600 }}>
-          {["Surgery Technicians", "Kennel Veterinary Technicians", "CSR"].map((cat) => (
-            <button key={cat} onClick={() => setPage(cat)}>
-              {cat}
-            </button>
+        <div style={{ display: "flex", justifyContent: "center", gap: 32, padding: 16, borderBottom: "1px solid #ddd", fontWeight: 700 }}>
+          {["Women", "Men", "Doctors"].map((cat) => (
+            <button key={cat} onClick={() => setPage(cat)}>{cat}</button>
           ))}
         </div>
       )}
@@ -179,45 +233,20 @@ function Login({ onLogin }) {
   return (
     <div style={{ minHeight: "80vh", display: "grid", gridTemplateColumns: "1fr 1fr" }}>
       <div style={{ background: "#2d241b", color: "white", padding: 48, display: "flex", alignItems: "center" }}>
-        <div>
-          <div style={{ fontSize: 56, fontWeight: 800, lineHeight: 1.05 }}>
-            Order approved uniforms with no payment required.
-          </div>
-          <p style={{ fontSize: 18, opacity: 0.85 }}>
-            Choose your scrub items and submit your request for company review.
-          </p>
+        <div style={{ fontSize: 56, fontWeight: 800, lineHeight: 1.05 }}>
+          Order approved uniforms with no payment required.
         </div>
       </div>
-
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 32 }}>
         <form onSubmit={submit} style={{ width: "100%", maxWidth: 420 }}>
           <Lock size={40} color="#005a70" />
-          <h1 style={{ fontSize: 36 }}>Sign In</h1>
-
-          <div style={{ marginBottom: 16 }}>
-            <label>Email or Username</label>
-            <input
-              style={{ width: "100%", padding: 12, border: "1px solid #ccc", borderRadius: 6 }}
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-
-          <div style={{ marginBottom: 16 }}>
-            <label>Password</label>
-            <input
-              type="password"
-              style={{ width: "100%", padding: 12, border: "1px solid #ccc", borderRadius: 6 }}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
+          <h1>Sign In</h1>
+          <label>Username</label>
+          <input style={{ width: "100%", padding: 12, marginBottom: 16 }} value={username} onChange={(e) => setUsername(e.target.value)} />
+          <label>Password</label>
+          <input type="password" style={{ width: "100%", padding: 12, marginBottom: 16 }} value={password} onChange={(e) => setPassword(e.target.value)} />
           {error && <p style={{ color: "red" }}>{error}</p>}
-
-          <Button className="w-full" style={{ width: "100%", background: "#005a70", color: "white", padding: 14 }}>
-            Sign In
-          </Button>
+          <Button style={{ width: "100%", background: "#005a70", color: "white", padding: 14 }}>Sign In</Button>
         </form>
       </div>
     </div>
@@ -230,33 +259,51 @@ function Catalog({ category, setSelectedProduct }) {
   return (
     <main style={{ padding: 32 }}>
       <h2 style={{ fontSize: 32 }}>{category}</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginTop: 24 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, marginTop: 24 }}>
         {filtered.map((p) => (
-          <Card key={p.id} className="card" onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer" }}>
+          <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer", border: "1px solid #ddd", textAlign: "center", paddingBottom: 16 }}>
             <img src={p.image} alt="" style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "cover" }} />
-            <CardContent style={{ padding: 20, textAlign: "center" }}>
+            <div style={{ padding: 12 }}>
               <div style={{ fontWeight: 700 }}>{p.brand}</div>
               <div>{p.name}</div>
               <div>Style {p.style}</div>
-              <div style={{ color: "red", fontWeight: 700 }}>{money(p.price)}</div>
-            </CardContent>
-          </Card>
+              <div style={{ color: "#005a70", fontWeight: 700 }}>{money(p.price)}</div>
+            </div>
+          </div>
         ))}
       </div>
     </main>
   );
 }
 
+function OptionButton({ selected, children, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        marginRight: 8,
+        marginBottom: 8,
+        padding: "8px 12px",
+        border: selected ? "2px solid #005a70" : "1px solid #aaa",
+        background: selected ? "#005a70" : "white",
+        color: selected ? "white" : "black",
+        fontWeight: selected ? 700 : 400,
+        borderRadius: 4,
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 function ProductDetail({ product, addToCart, back }) {
   const [color, setColor] = useState(product.colors[0]);
-  const [size, setSize] = useState(product.sizes[2] || product.sizes[0]);
+  const [size, setSize] = useState(product.sizes[0]);
   const [qty, setQty] = useState(1);
 
   return (
     <main style={{ padding: 32 }}>
-      <button onClick={back}>
-        <ArrowLeft size={16} /> Back
-      </button>
+      <button onClick={back}><ArrowLeft size={16} /> Back</button>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 24 }}>
         <img src={product.image} alt="" style={{ width: "100%", borderRadius: 8 }} />
@@ -264,32 +311,26 @@ function ProductDetail({ product, addToCart, back }) {
         <div>
           <h1>{product.brand} - {product.name}</h1>
           <p>Style# {product.style}</p>
-          <h2 style={{ color: "red" }}>{money(product.price)}</h2>
+          <h2 style={{ color: "#005a70" }}>{money(product.price)}</h2>
 
-          <div>
-            <h3>Color</h3>
-            {product.colors.map((c) => (
-              <button key={c} onClick={() => setColor(c)} style={{ marginRight: 8 }}>
-                {c}
-              </button>
-            ))}
-          </div>
+          <h3>Color: <span style={{ color: "#005a70" }}>{color}</span></h3>
+          {product.colors.map((c) => (
+            <OptionButton key={c} selected={color === c} onClick={() => setColor(c)}>
+              {c}
+            </OptionButton>
+          ))}
 
-          <div>
-            <h3>Size</h3>
-            {product.sizes.map((s) => (
-              <button key={s} onClick={() => setSize(s)} style={{ marginRight: 8, marginBottom: 8 }}>
-                {s}
-              </button>
-            ))}
-          </div>
+          <h3>Size: <span style={{ color: "#005a70" }}>{size}</span></h3>
+          {product.sizes.map((s) => (
+            <OptionButton key={s} selected={size === s} onClick={() => setSize(s)}>
+              {s}
+            </OptionButton>
+          ))}
 
-          <div>
-            <h3>Quantity</h3>
-            <button onClick={() => setQty(Math.max(1, qty - 1))}><Minus size={16} /></button>
-            <span style={{ margin: "0 12px" }}>{qty}</span>
-            <button onClick={() => setQty(qty + 1)}><Plus size={16} /></button>
-          </div>
+          <h3>Quantity</h3>
+          <button onClick={() => setQty(Math.max(1, qty - 1))}><Minus size={16} /></button>
+          <span style={{ margin: "0 12px" }}>{qty}</span>
+          <button onClick={() => setQty(qty + 1)}><Plus size={16} /></button>
 
           <Button
             style={{ width: "100%", background: "#005a70", color: "white", marginTop: 24, padding: 14 }}
@@ -304,8 +345,6 @@ function ProductDetail({ product, addToCart, back }) {
 }
 
 function Cart({ cart, setCart, setPage }) {
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-
   return (
     <main style={{ padding: 32, display: "grid", gridTemplateColumns: "1fr 360px", gap: 32 }}>
       <section>
@@ -314,32 +353,22 @@ function Cart({ cart, setCart, setPage }) {
           <div key={idx} style={{ borderBottom: "1px solid #ddd", padding: "20px 0", display: "flex", gap: 20 }}>
             <img src={item.image} alt="" style={{ width: 100, height: 100, objectFit: "cover" }} />
             <div style={{ flex: 1 }}>
-              <div style={{ fontWeight: 700 }}>{item.brand}</div>
+              <strong>{item.brand}</strong>
               <div>{item.name}</div>
-              <div>{item.color} / {item.size}</div>
+              <div>Style: {item.style}</div>
+              <div>Color: {item.color}</div>
+              <div>Size: {item.size}</div>
               <div>Qty: {item.qty}</div>
             </div>
-            <button onClick={() => setCart(cart.filter((_, i) => i !== idx))}>
-              <Trash2 size={16} />
-            </button>
+            <button onClick={() => setCart(cart.filter((_, i) => i !== idx))}><Trash2 size={16} /></button>
           </div>
         ))}
       </section>
 
       <aside style={{ background: "#f3f4f6", padding: 24, borderRadius: 8 }}>
         <h2>Order Summary</h2>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span>Estimated Retail Total</span>
-          <span>{money(subtotal)}</span>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span>Payment Due Online</span>
-          <span>$0.00</span>
-        </div>
-        <Button
-          style={{ width: "100%", background: "#005a70", color: "white", marginTop: 24, padding: 14 }}
-          onClick={() => setPage("checkout")}
-        >
+        <div>Payment Due Online: $0.00</div>
+        <Button style={{ width: "100%", background: "#005a70", color: "white", marginTop: 24, padding: 14 }} onClick={() => setPage("checkout")}>
           Submit Request Details
         </Button>
       </aside>
@@ -349,18 +378,10 @@ function Cart({ cart, setCart, setPage }) {
 
 function Checkout({ cart, setPage, setCart }) {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    employeeName: "",
-    email: "",
-    phone: "",
-    department: "",
-  });
+  const [form, setForm] = useState({ employeeName: "", email: "", phone: "", department: "" });
 
   const orderText = useMemo(
-    () =>
-      cart
-        .map((i) => `${i.qty}x ${i.brand} ${i.name} | ${i.color} | Size ${i.size}`)
-        .join("\n"),
+    () => cart.map((i) => `${i.qty}x ${i.brand} ${i.name} | Style ${i.style} | ${i.color} | Size ${i.size}`).join("\n"),
     [cart]
   );
 
@@ -370,7 +391,6 @@ function Checkout({ cart, setPage, setCart }) {
     const body = encodeURIComponent(
       `Employee Name: ${form.employeeName}\nEmail: ${form.email}\nPhone: ${form.phone}\nDepartment: ${form.department}\n\nItems:\n${orderText}`
     );
-
     window.location.href = `mailto:${SUBMISSION_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
     setCart([]);
@@ -391,23 +411,19 @@ function Checkout({ cart, setPage, setCart }) {
     <main style={{ padding: 32 }}>
       <h1>Checkout</h1>
       <p>No online payment is collected.</p>
-
       <form onSubmit={submit} style={{ maxWidth: 600 }}>
-        {["employeeName", "email", "phone", "department"].map((key) => (
+        {[
+          ["employeeName", "Employee Name"],
+          ["email", "Employee Email"],
+          ["phone", "Phone Number"],
+          ["department", "Department / Role"],
+        ].map(([key, label]) => (
           <div key={key} style={{ marginBottom: 16 }}>
-            <label>{key}</label>
-            <input
-              required
-              style={{ width: "100%", padding: 12, border: "1px solid #ccc", borderRadius: 6 }}
-              value={form[key]}
-              onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-            />
+            <label>{label}</label>
+            <input required style={{ width: "100%", padding: 12, border: "1px solid #ccc" }} value={form[key]} onChange={(e) => setForm({ ...form, [key]: e.target.value })} />
           </div>
         ))}
-
-        <Button style={{ background: "#005a70", color: "white", padding: 14 }}>
-          Submit Uniform Request
-        </Button>
+        <Button style={{ background: "#005a70", color: "white", padding: 14 }}>Submit Uniform Request</Button>
       </form>
     </main>
   );
@@ -419,10 +435,7 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const currentCategory =
-    ["Surgery Technicians", "Kennel Veterinary Technicians", "CSR"].includes(page)
-      ? page
-      : "Surgery Technicians";
+  const currentCategory = ["Women", "Men", "Doctors"].includes(page) ? page : "Women";
 
   function addToCart(item) {
     setCart([...cart, item]);
@@ -432,12 +445,7 @@ export default function App() {
 
   return (
     <div>
-      <Header
-        cartCount={cart.reduce((s, i) => s + i.qty, 0)}
-        setPage={setPage}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-      />
+      <Header cartCount={cart.reduce((s, i) => s + i.qty, 0)} setPage={setPage} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 
       {!loggedIn ? (
         <Login onLogin={() => { setLoggedIn(true); setPage("home"); }} />
