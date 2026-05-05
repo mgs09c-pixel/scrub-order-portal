@@ -50,7 +50,7 @@ const womensBottomSizes = [
   "XXXL",
 ];
 
-const scrubColors = ["Navy", "Caribbean Blue"];
+const scrubColors = ["Navy", "Caribbean Blue", "Black"];
 const teeColors = ["Mauve", "Sage", "Asphalt", "Ocean Blue"];
 
 const products = [
