@@ -9,6 +9,31 @@ import {
   Lock,
 } from "lucide-react";
 
+import women2625aBlack from "./images/women-2625a-black.png";
+import women2625aCaribbean from "./images/women-2625a-caribbean-blue.png";
+import women2625aNavy from "./images/women-2625a-navy.png";
+
+import womenCk110aBlack from "./images/women-ck110a-black.png";
+import womenCk110aCaribbean from "./images/women-ck110a-caribbean-blue.png";
+import womenCk110aNavy from "./images/women-ck110a-navy.png";
+
+import womenCk065aBlack from "./images/women-ck065a-black.png";
+import womenCk065aCaribbean from "./images/women-ck065a-caribbean-blue.png";
+import womenCk065aNavy from "./images/women-ck065a-navy.png";
+
+import menTopBlack from "./images/men-551816823-black.png";
+import menTopCaribbean from "./images/men-551816823-caribbean-blue.png";
+import menTopNavy from "./images/men-551816823-navy.png";
+
+import menBottomBlack from "./images/men-551816953-black.png";
+import menBottomCaribbean from "./images/men-551816953-caribbean-blue.png";
+import menBottomNavy from "./images/men-551816953-navy.png";
+
+import teeMauve from "./images/tee-3001-mauve.png";
+import teeSage from "./images/tee-3001-sage.png";
+import teeAsphalt from "./images/tee-3001-asphalt.png";
+import teeOceanBlue from "./images/tee-3001-ocean-blue.png";
+
 function Button({ children, style = {}, ...props }) {
   return (
     <button
@@ -62,8 +87,11 @@ const products = [
     style: "2625A",
     colors: scrubColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: women2625aBlack,
+      "Caribbean Blue": women2625aCaribbean,
+      Navy: women2625aNavy,
+    },
   },
   {
     id: "women-CK110A",
@@ -73,8 +101,11 @@ const products = [
     style: "CK110A",
     colors: scrubColors,
     sizes: womensBottomSizes,
-    image:
-      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: womenCk110aBlack,
+      "Caribbean Blue": womenCk110aCaribbean,
+      Navy: womenCk110aNavy,
+    },
   },
   {
     id: "women-CK065A",
@@ -84,8 +115,11 @@ const products = [
     style: "CK065A",
     colors: scrubColors,
     sizes: womensBottomSizes,
-    image:
-      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: womenCk065aBlack,
+      "Caribbean Blue": womenCk065aCaribbean,
+      Navy: womenCk065aNavy,
+    },
   },
   {
     id: "women-tee",
@@ -95,8 +129,12 @@ const products = [
     style: "3001",
     colors: teeColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Mauve: teeMauve,
+      Sage: teeSage,
+      Asphalt: teeAsphalt,
+      "Ocean Blue": teeOceanBlue,
+    },
   },
   {
     id: "men-top-551816823",
@@ -106,8 +144,11 @@ const products = [
     style: "551816823",
     colors: scrubColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: menTopBlack,
+      "Caribbean Blue": menTopCaribbean,
+      Navy: menTopNavy,
+    },
   },
   {
     id: "men-bottom-551816953",
@@ -117,8 +158,11 @@ const products = [
     style: "551816953",
     colors: scrubColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: menBottomBlack,
+      "Caribbean Blue": menBottomCaribbean,
+      Navy: menBottomNavy,
+    },
   },
   {
     id: "men-tee",
@@ -128,8 +172,12 @@ const products = [
     style: "3001",
     colors: teeColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Mauve: teeMauve,
+      Sage: teeSage,
+      Asphalt: teeAsphalt,
+      "Ocean Blue": teeOceanBlue,
+    },
   },
   {
     id: "doctors-top-551816823",
@@ -139,8 +187,11 @@ const products = [
     style: "551816823",
     colors: scrubColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: menTopBlack,
+      "Caribbean Blue": menTopCaribbean,
+      Navy: menTopNavy,
+    },
   },
   {
     id: "doctors-bottom-551816953",
@@ -150,8 +201,11 @@ const products = [
     style: "551816953",
     colors: scrubColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Black: menBottomBlack,
+      "Caribbean Blue": menBottomCaribbean,
+      Navy: menBottomNavy,
+    },
   },
   {
     id: "doctors-tee",
@@ -161,10 +215,18 @@ const products = [
     style: "3001",
     colors: teeColors,
     sizes: standardSizes,
-    image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop",
+    images: {
+      Mauve: teeMauve,
+      Sage: teeSage,
+      Asphalt: teeAsphalt,
+      "Ocean Blue": teeOceanBlue,
+    },
   },
 ];
+
+function getProductImage(product, color) {
+  return product.images?.[color] || product.images?.[product.colors[0]];
+}
 
 function Header({ cartCount, setPage, loggedIn, setLoggedIn }) {
   return (
@@ -247,7 +309,7 @@ function Catalog({ category, setSelectedProduct }) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, marginTop: 24 }}>
         {filtered.map((p) => (
           <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer", border: "1px solid #ddd", textAlign: "center", paddingBottom: 16 }}>
-            <img src={p.image} alt="" style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "cover" }} />
+            <img src={getProductImage(p, p.colors[0])} alt="" style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "contain", background: "white" }} />
             <div style={{ padding: 12 }}>
               <div style={{ fontWeight: 700 }}>{p.brand}</div>
               <div>{p.name}</div>
@@ -285,12 +347,14 @@ function ProductDetail({ product, addToCart, back }) {
   const [size, setSize] = useState(product.sizes[0]);
   const [qty, setQty] = useState(1);
 
+  const selectedImage = getProductImage(product, color);
+
   return (
     <main style={{ padding: 32 }}>
       <button onClick={back}><ArrowLeft size={16} /> Back</button>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 24 }}>
-        <img src={product.image} alt="" style={{ width: "100%", borderRadius: 8 }} />
+        <img src={selectedImage} alt="" style={{ width: "100%", borderRadius: 8, objectFit: "contain", background: "white", maxHeight: 700 }} />
 
         <div>
           <h1>{product.brand} - {product.name}</h1>
@@ -317,7 +381,7 @@ function ProductDetail({ product, addToCart, back }) {
 
           <Button
             style={{ width: "100%", background: "#005a70", color: "white", marginTop: 24, padding: 14 }}
-            onClick={() => addToCart({ ...product, color, size, qty })}
+            onClick={() => addToCart({ ...product, color, size, qty, image: selectedImage })}
           >
             Continue
           </Button>
@@ -334,7 +398,7 @@ function Cart({ cart, setCart, setPage }) {
         <h1>Cart</h1>
         {cart.map((item, idx) => (
           <div key={idx} style={{ borderBottom: "1px solid #ddd", padding: "20px 0", display: "flex", gap: 20 }}>
-            <img src={item.image} alt="" style={{ width: 100, height: 100, objectFit: "cover" }} />
+            <img src={item.image} alt="" style={{ width: 100, height: 100, objectFit: "contain" }} />
             <div style={{ flex: 1 }}>
               <strong>{item.brand}</strong>
               <div>{item.name}</div>
