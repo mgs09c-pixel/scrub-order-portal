@@ -34,6 +34,8 @@ import teeSage from "./images/tee-3001-sage.png";
 import teeAsphalt from "./images/tee-3001-asphalt.png";
 import teeOceanBlue from "./images/tee-3001-ocean-blue.png";
 
+import headerLogo from "./images/North_Florida_Animal_Hospital-HeaderLogo.png";
+
 function Button({ children, style = {}, ...props }) {
   return (
     <button
@@ -249,11 +251,26 @@ function Header({ cartCount, setPage, loggedIn, setLoggedIn }) {
         </div>
       </div>
 
-      <div style={{ padding: 24, borderBottom: "1px solid #ddd" }}>
-        <div style={{ fontSize: 32, fontWeight: 700, color: "#35533b", lineHeight: 1.1 }}>
-          North Florida<br />Animal Hospital
-        </div>
-      </div>
+<div
+  style={{
+    padding: "18px 24px",
+    borderBottom: "1px solid #ddd",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "white",
+  }}
+>
+  <img
+    src={headerLogo}
+    alt="North Florida Animal Hospital"
+    style={{
+      maxHeight: 90,
+      width: "auto",
+      objectFit: "contain",
+    }}
+  />
+</div>
 
       {loggedIn && (
         <div style={{ display: "flex", justifyContent: "center", gap: 32, padding: 16, borderBottom: "1px solid #ddd", fontWeight: 700 }}>
